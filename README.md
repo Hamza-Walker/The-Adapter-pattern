@@ -1,0 +1,1 @@
+# The-Adapter-pattern
