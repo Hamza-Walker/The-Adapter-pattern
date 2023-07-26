@@ -1,10 +1,8 @@
 package com.walker;
 
+import com.walker.adapter.FacebookAdapter;
 import com.walker.model.User;
-import com.walker.notificationSender.NotificationAdapter;
-import com.walker.notificationSender.EmailSender;
-import com.walker.notificationSender.SmsSender;
-import com.walker.notificationSender.ToastNotificationSender;
+import com.walker.notificationSender.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +18,14 @@ public class Application {
         NotificationAdapter smsAdapter = new SmsSender();
         NotificationAdapter emailAdapter = new EmailSender();
         NotificationAdapter toastAdapter = new ToastNotificationSender();
+        NotificationAdapter facebookAdapter = new FacebookAdapter(new FacebookMessengerSender());
+
 
         for (User user : users) {
             smsAdapter.sendNotification(user.phoneNumber(), "Hello!");
             emailAdapter.sendNotification(user.email(), "Codecool, Notification,  Hello!");
             toastAdapter.sendNotification(user.userName(), "Hello!");
+            facebookAdapter.sendNotification(user.userName(), "marksncuker flucker");
         }
     }
 
